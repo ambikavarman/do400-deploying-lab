@@ -2,6 +2,8 @@ pipeline {
  agent {
  node { label "maven" }
  }
+environment { QUAY = credentials('QUAY_USER')
+
  stages {
 stage("Build & Push Image") {
  steps {
@@ -26,11 +28,4 @@ java-alpine-openjdk11-jre:latest \
 }
 }
 }
- stage("Test") {
- steps {
- sh "./mvnw verify"
- }
- }
- }
-environment { QUAY = credentials('QUAY_USER') 
-
+}
