@@ -23,15 +23,13 @@ java-alpine-openjdk11-jre:latest \
  -Dquarkus.container-image.additional-tags=latest \
  -Dquarkus.container-image.push=true
  '''
- }
- }
-
+}
+}
  stage("Test") {
  steps {
  sh "./mvnw verify"
  }
  }
  }
-}
 environment { QUAY = credentials('QUAY_USER') 
 
