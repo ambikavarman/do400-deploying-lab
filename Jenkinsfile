@@ -12,8 +12,7 @@ stage("Test") {
 stage("Build & Push Image") {
 steps {
 sh '''
-./mvnw quarkus:add-extension \
--Dextensions="container-image-jib"
+./mvnw quarkus:add-extension -Dextensions="container-image-jib"
 '''
 sh '''
 ./mvnw package -DskipTests \
