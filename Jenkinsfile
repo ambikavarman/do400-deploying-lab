@@ -1,6 +1,6 @@
 pipeline {
  agent {
- node { label: "maven" }
+ node {label: "maven"}
  }
  environment { QUAY = credentials('QUAY_USER') }
  stages {
@@ -24,7 +24,7 @@ java-alpine-openjdk11-jre:latest \
  -Dquarkus.container-image.additional-tags=latest \
  -Dquarkus.container-image.push=true
  '''
-}
-}
-}
+ }
+ }
+ }
 }
