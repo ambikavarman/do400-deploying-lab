@@ -31,4 +31,22 @@ sh '''
 }
 }
 }
+stage('Deploy to TEST') {
+ when { not { branch "main" } }
+steps {
+ sh """
+ oc set image deployment home-automation \
+ home-automation=quay.io/${QUAY_USR}/do400-deploying-lab:build-
+${BUILD_NUMBER} \
+ -n ambikavarman-deploying-lab-test --record
+ """
+ }
+}
+
+sh """
+ oc set image deployment home-automation \
+ home-automation=quay.io/${QUAY_USR}/do400-deploying-lab:build-${BUILD_NUMBER}
+ \
+ -n ambikavarman-deploying-lab-test --record
+"""
 
