@@ -3,12 +3,15 @@ pipeline {
  node {label "maven"}
  }
  environment { QUAY = credentials('QUAY_USER') }
+
  stages {
+
 stage("Test") {
  steps {
  sh "./mvnw verify"
  }
  }
+
 stage("Build & Push Image") {
 steps {
 sh '''
@@ -34,8 +37,7 @@ stage('Deploy to TEST') {
  when { not { branch "main" } }
 steps {
  sh """
- oc set image deployment home-automation home-automation=quay.io/ambikavarman/do400-deploying-lab:build-
-BUILD_NUMBER} -n ambikavarman-deploying-lab-test --record
+ oc set image deployment home-automation home-automation=quay.io/ambikavarman/do400-deploying-lab:build-BUILD_NUMBER} -n ambikavarman-deploying-lab-test --record
  """
  }
 }
