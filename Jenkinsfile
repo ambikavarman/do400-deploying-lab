@@ -28,15 +28,15 @@ sh '''
 -Dquarkus.container-image.push=true
 '''
 }
-
 }
 stage('Deploy to TEST') {
  when { not { branch "main" } }
 steps {
  sh """
- oc set image deployment home-automation home-automation=quay.io/ambikavarman/do400-deploying-lab:build-${BUILD_NUMBER} -n ambikavarman-deploying-lab-test --record
+ oc set image deployment home-automation home-automation=quay.io/ambikavarman/do400-deploying-lab:build-
+BUILD_NUMBER} -n ambikavarman-deploying-lab-test --record
  """
  }
-}
+
 }
 }
