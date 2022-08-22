@@ -37,7 +37,6 @@ steps {
 BUILD_NUMBER} -n ambikavarman-deploying-lab-test --record
  """
  }
-
 }
 }
 }
