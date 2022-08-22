@@ -28,6 +28,7 @@ sh '''
 -Dquarkus.container-image.push=true
 '''
 }
+
 }
 stage('Deploy to TEST') {
  when { not { branch "main" } }
